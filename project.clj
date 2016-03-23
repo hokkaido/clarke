@@ -3,6 +3,9 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/clojurescript "1.8.34"]
                  [org.omcljs/om "1.0.0-alpha31"]
+                 [com.datomic/datomic-free "0.9.5350"]
+                 [ring "1.4.0"]
+                 [compojure "1.5.0"]
                  [secretary "1.2.3"]
                  [garden "1.3.1"]]
 
@@ -15,7 +18,8 @@
   :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"
                                     "resources/public/css/compiled"]
 
-  :figwheel {:css-dirs ["resources/public/css"]}
+  :figwheel {:css-dirs ["resources/public/css"]
+             :ring-handler clarke.handler/handler}
 
   :garden {:builds [{:id "main"
                      :source-paths ["src/clj"]
